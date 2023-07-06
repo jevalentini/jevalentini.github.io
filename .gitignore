@@ -1,0 +1,6 @@
+_site
+token_github.txt
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
