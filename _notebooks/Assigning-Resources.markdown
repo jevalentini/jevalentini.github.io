@@ -2,7 +2,7 @@
 version: 5
 is_notebook: true
 layout: none
-title: Assignment
-permalink: /Assignment_v1.0.1/
+title: Assigning Resources
+permalink: /Assigning-Resources/
 ---
 {% include Assignment.jl.html %}
