@@ -1,7 +1,7 @@
 ---
 version: 5
 is_notebook: true
-layout: none
+layout: notebooks
 title: Assigning Resources
 permalink: /Assigning-Resources/
 ---
