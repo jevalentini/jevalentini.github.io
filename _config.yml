@@ -33,6 +33,9 @@ email: jevalentini@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Do you want to choose from a pool of options the one which best suits a goal and meets a list of requirements? You are looking for mathematical optimization!
 
+nbdescription: >- # this means to ignore newlines until "baseurl:"
+  If you are dealing with a similar problem and you need a professional to take a look at it. Contact me ASAP!
+  
 baseurl: ""
 
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
