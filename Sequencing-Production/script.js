@@ -96,7 +96,6 @@
                 console.log(flag)
                 console.log(nextDetailElements.length)
                 if(flag==(nextDetailElements.length)&&flag>0){
-                    watchSliders();
                     console.log("getsIn")     
                     observer.disconnect(); 
                 }
@@ -128,84 +127,3 @@
       document.addEventListener("DOMContentLoaded", function (e) {
         observePlutoCells();
       });
-      function watchSliders(){              
-        const sliderARE = document.getElementById('ARE').getElementsByTagName("input")[0];
-        const sliderABE = document.getElementById('ABE').getElementsByTagName("input")[0];
-        const sliderAYE = document.getElementById('AYE').getElementsByTagName("input")[0];
-
-        let currentValueARE = sliderARE.value;
-        let currentValueABE = sliderABE.value;
-        let currentValueAYE = sliderAYE.value;
-        let hash = currentValueARE.concat(currentValueABE,currentValueAYE);
-        displayAttachedToSliders(hash)  
-        sliderARE.addEventListener('input', (event) => {
-          console.log(currentValueARE)
-	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-	  undisplayAttachedToSliders(hash)
-
-          currentValueARE = event.target.value;
-
-	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-          console.log(currentValueARE)
-	  displayAttachedToSliders(hash)
-        });
-
-        sliderABE.addEventListener('input', (event) => {
-          console.log(currentValueABE)
-	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-	  undisplayAttachedToSliders(hash)
-
-          currentValueABE = event.target.value;
-
-	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-          console.log(currentValueABE)
-	  displayAttachedToSliders(hash)
-        });
-          
-        sliderAYE.addEventListener('input', (event) => {
-          console.log(currentValueAYE)
-          hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-          undisplayAttachedToSliders(hash)
-
-          currentValueAYE = event.target.value;
-
-	      hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-          console.log(currentValueAYE)  
-          displayAttachedToSliders(hash)
-        });
-
-      }
-      function displayAttachedToSliders(hash){
-		console.log("display");          
-		console.log(hash);
-		var displayMode="block";  
-		var resourceDisplay=document.getElementById("resources_1".concat(hash));
-		resourceDisplay.style.display=displayMode;
-		var solDisplay =document.getElementById("sol_1".concat(hash));
-		solDisplay.style.display=displayMode;
-		var descDisplay =document.getElementById("description_1".concat(hash));
-		descDisplay.style.display=displayMode;
-
-		console.log("before model");         
-		var modDisplay =document.getElementById("model_1".concat(hash));
-		modDisplay.style.display=displayMode;
-		console.log("after model"); 
-		var resDisplay =document.getElementById("result_1".concat(hash)).closest("div");
-		resDisplay.style.display=displayMode;
-      }
-        
-      function undisplayAttachedToSliders(hash){
-		console.log("undisplay");          
-		console.log(hash);
-		var displayMode="none";   
-		var resourceDisplay=document.getElementById("resources_1".concat(hash));
-		resourceDisplay.style.display=displayMode;    
-		var solDisplay =document.getElementById("sol_1".concat(hash));
-		solDisplay.style.display=displayMode;
-		var descDisplay =document.getElementById("description_1".concat(hash));
-		descDisplay.style.display=displayMode;
-		var modDisplay =document.getElementById("model_1".concat(hash));
-		modDisplay.style.display=displayMode;
-		var resDisplay =document.getElementById("result_1".concat(hash)).closest("div");
-		resDisplay.style.display=displayMode;   
-      }
