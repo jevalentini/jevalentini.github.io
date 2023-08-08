@@ -1,33 +1,4 @@
 import { loadGIF} from './gif-script.js';
-        function preloadImages(imageUrls, callback) {
-            var loadedImages = 0;
-            var totalImages = imageUrls.length;
-
-            function imageLoaded() {
-                loadedImages++;
-                if (loadedImages === totalImages) {
-                    callback();
-                }
-            }
-
-            for (var i = 0; i < totalImages; i++) {
-                var img = new Image();
-                img.onload = imageLoaded;
-                img.onerror = imageLoaded;
-                img.src = imageUrls[i];
-            }
-        }
-
-        // Call preloadImages with an array of image URLs
-        var imageUrls = [
-            'transportation.gif',
-            'transportation_prob.gif',
-            // Add more image URLs here
-        ];
-
-        preloadImages(imageUrls, function() {
-            console.log('All images preloaded.');
-        });
       function processPlutoCells(detailElementID)  {                  
         var detailElement = document.getElementById(detailElementID);   
         var nextDetailElements = Array.from(document.getElementsByTagName("details"));
@@ -39,7 +10,7 @@ import { loadGIF} from './gif-script.js';
         const pluto_cell = detailElement.closest("pluto-cell");
         var cell_id=  pluto_cell.id;          
         //console.log(detailElement)
-          
+
         var auxbody = document.getElementsByTagName("body"); 
        // console.log(auxbody)   
         var body = auxbody[0]        
@@ -54,7 +25,7 @@ import { loadGIF} from './gif-script.js';
         //console.log(pluto_notebook)
         var auxplutoElement=pluto_notebook.getElementsByTagName("pluto-cell");
         console.log(auxplutoElement)
-          
+
         var plutoElement;  
         var flag=0;
         var nextElementReached=0;
@@ -104,7 +75,7 @@ import { loadGIF} from './gif-script.js';
         })
         return detailElement
     }
-         
+
       function observePlutoCells() {
         var targetNode = document.getElementsByTagName("body");
         targetNode=targetNode[0]
@@ -122,12 +93,12 @@ import { loadGIF} from './gif-script.js';
                     observeDetailsElement(detail); 
                     flag=flag+1;
                 }
-                  
+
                 console.log(flag)
                 console.log(nextDetailElements.length)
-                if(flag==(nextDetailElements.length)&&flag>0){
-                    console.log("getsIn")
-		    loadGIF();     
+                if(flag==(nextDetailElements.length)&&flag>1){
+                    console.log("getsIn")    
+                    loadGIF();    
                     observer.disconnect(); 
                 }
                 break;
@@ -154,7 +125,7 @@ import { loadGIF} from './gif-script.js';
 
           observer.observe(targetDetails, { attributes: true });
         }
-
-      document.addEventListener("DOMContentLoaded", function (e) {
-        observePlutoCells();
-      });
+ 
+          document.addEventListener("DOMContentLoaded", function (e) {      
+            observePlutoCells();     
+          });
