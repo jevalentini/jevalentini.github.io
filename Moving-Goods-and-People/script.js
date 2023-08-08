@@ -1,5 +1,33 @@
 import { loadGIF} from './gif-script.js';
+        function preloadImages(imageUrls, callback) {
+            var loadedImages = 0;
+            var totalImages = imageUrls.length;
 
+            function imageLoaded() {
+                loadedImages++;
+                if (loadedImages === totalImages) {
+                    callback();
+                }
+            }
+
+            for (var i = 0; i < totalImages; i++) {
+                var img = new Image();
+                img.onload = imageLoaded;
+                img.onerror = imageLoaded;
+                img.src = imageUrls[i];
+            }
+        }
+
+        // Call preloadImages with an array of image URLs
+        var imageUrls = [
+            'transportation.gif',
+            'transportation_prob.gif',
+            // Add more image URLs here
+        ];
+
+        preloadImages(imageUrls, function() {
+            console.log('All images preloaded.');
+        });
       function processPlutoCells(detailElementID)  {                  
         var detailElement = document.getElementById(detailElementID);   
         var nextDetailElements = Array.from(document.getElementsByTagName("details"));
