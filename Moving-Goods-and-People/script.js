@@ -97,7 +97,6 @@ var observer = new MutationObserver(function (mutationsList, observer) {
         console.log(nextDetailElements.length)
         if(flag==(nextDetailElements.length)&&flag>1){
             console.log("getsIn")    
-            loadGIF();    
             observer.disconnect(); 
         }
         break;
