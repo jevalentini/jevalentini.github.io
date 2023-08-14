@@ -123,7 +123,12 @@ function observeDetailsElement(detail) {
 
   observer.observe(targetDetails, { attributes: true });
 }
-
+function imgLoad(img) {
+	var className="spin_".concat(img.id)
+	var spinner = document.getElementsByClassName(className)[0];
+	spinner.style.visibility = 'hidden';
+	img.style.visibility = 'visible';
+}
   document.addEventListener("DOMContentLoaded", function (e) {      
     observePlutoCells();     
   });
