@@ -36,30 +36,19 @@
     	align-items: center;
       }
     </style>
-	<script>
-		function objLoad() {
-			var spinner = document.getElementsByClassName("spin_nbAssignment")[0];
-			spinner.style.visibility = 'hidden';
-			var obj = document.getElementById("pluto_Assignment");
-			obj.style.visibility = 'visible';
-		}
-	</script>
-    <object class="page-content" id="nbAssignment" data="Assignment-pluto.html" width="100%" style="padding-top: 0px" onload="objLoad()"></object>
+    <object class="page-content" id="nbAssignment" data="Assignment-pluto.html" width="100%" style="padding-top: 0px"></object>
 
+    <script>
+	window.addEventListener('beforeunload', function(event) {
+		console.log("leaving");
+    		var element = document.getElementById('nbAssignment');
+		element.remove();
+	});
+    </script>
 	<div class="spin_nbAssignment">
 	
 	</div>
     <div>
-        <br> 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br> 
-        <br>
-        <br>
-        <br>
-        <br>
     </div>
     <div class="wrapper" style="margin-left: auto; margin-right: auto; position: fixed; bottom:0%; left:0%; right:0%; background-color: #ffffff">
         {%- include nbfooter.html -%}

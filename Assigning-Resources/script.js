@@ -1,3 +1,10 @@
+
+	function objLoad() {
+		var spinner = parent.document.getElementsByClassName("spin_nbAssignment")[0];
+		spinner.style.visibility = 'hidden';
+		var obj = document.getElementById("pluto_Assignment");
+		obj.style.visibility = 'visible';
+	}
       function processPlutoCells(detailElementID)  {                  
         var detailElement = document.getElementById(detailElementID);   
         var nextDetailElements = Array.from(document.getElementsByTagName("details"));
@@ -97,6 +104,7 @@
                 console.log(nextDetailElements.length)
                 if(flag==(nextDetailElements.length)&&flag>0){
                     watchSliders();
+		    objLoad()
                     console.log("getsIn")     
                     observer.disconnect(); 
                 }
@@ -137,55 +145,125 @@
         let currentValueABE = sliderABE.value;
         let currentValueAYE = sliderAYE.value;
         let hash = currentValueARE.concat(currentValueABE,currentValueAYE);
-        displayAttachedToSliders(hash)  
+	let hash2 ="feasible"
+	if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	  hash2 ="inf_less9";
+	} else if(parseInt(currentValueARE)<3){
+	  hash2 ="inf_redless3";
+	} else if(parseInt(currentValueABE)<2){
+	  hash2 ="inf_blueless2";
+	}
+        displayAttachedToSliders(hash,hash2)  
         sliderARE.addEventListener('input', (event) => {
           console.log(currentValueARE)
 	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-	  undisplayAttachedToSliders(hash)
+	  hash2 ="feasible"
+	  if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	    hash2 ="inf_less9";
+	  } else if(parseInt(currentValueARE)<3){
+	    hash2 ="inf_redless3";
+	  } else if(parseInt(currentValueABE)<2){
+	    hash2 ="inf_blueless2";
+	  }
+	  undisplayAttachedToSliders(hash,hash2)
 
           currentValueARE = event.target.value;
 
 	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
+	  hash2 ="feasible"
+	  if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	    hash2 ="inf_less9";
+	  } else if(parseInt(currentValueARE)<3){
+	    hash2 ="inf_redless3";
+	  } else if(parseInt(currentValueABE)<2){
+	    hash2 ="inf_blueless2";
+	  }
           console.log(currentValueARE)
-	  displayAttachedToSliders(hash)
+	  displayAttachedToSliders(hash,hash2)
         });
 
         sliderABE.addEventListener('input', (event) => {
           console.log(currentValueABE)
 	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-	  undisplayAttachedToSliders(hash)
+	  hash2 ="feasible"
+	  if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	    hash2 ="inf_less9";
+	  } else if(parseInt(currentValueARE)<3){
+	    hash2 ="inf_redless3";
+	  } else if(parseInt(currentValueABE)<2){
+	    hash2 ="inf_blueless2";
+	  }
+	  undisplayAttachedToSliders(hash,hash2)
 
           currentValueABE = event.target.value;
 
 	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
+	  hash2 ="feasible"
+	  if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	    hash2 ="inf_less9";
+	  } else if(parseInt(currentValueARE)<3){
+	    hash2 ="inf_redless3";
+	  } else if(parseInt(currentValueABE)<2){
+	    hash2 ="inf_blueless2";
+	  }
           console.log(currentValueABE)
-	  displayAttachedToSliders(hash)
+	  displayAttachedToSliders(hash,hash2)
         });
           
         sliderAYE.addEventListener('input', (event) => {
           console.log(currentValueAYE)
           hash=currentValueARE.concat(currentValueABE,currentValueAYE);
-          undisplayAttachedToSliders(hash)
+	  hash2 ="feasible"
+	  if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	    hash2 ="inf_less9";
+	  } else if(parseInt(currentValueARE)<3){
+	    hash2 ="inf_redless3";
+	  } else if(parseInt(currentValueABE)<2){
+	    hash2 ="inf_blueless2";
+	  }
+          undisplayAttachedToSliders(hash,hash2)
 
           currentValueAYE = event.target.value;
 
-	      hash=currentValueARE.concat(currentValueABE,currentValueAYE);
+	  hash=currentValueARE.concat(currentValueABE,currentValueAYE);
+	  hash2 ="feasible"
+	  if((parseInt(currentValueARE) + parseInt(currentValueABE) + parseInt(currentValueAYE))<9){
+	    hash2 ="inf_less9";
+	  } else if(parseInt(currentValueARE)<3){
+	    hash2 ="inf_redless3";
+	  } else if(parseInt(currentValueABE)<2){
+	    hash2 ="inf_blueless2";
+	  }
           console.log(currentValueAYE)  
-          displayAttachedToSliders(hash)
+          displayAttachedToSliders(hash,hash2)
         });
 
       }
-      function displayAttachedToSliders(hash){
+      function displayAttachedToSliders(hash,hash2){
 		console.log("display");          
 		console.log(hash);
 		var displayMode="block";  
 		var resourceDisplay=document.getElementById("resources_1".concat(hash));
 		resourceDisplay.style.display=displayMode;
-		var solDisplay =document.getElementById("sol_1".concat(hash));
-		solDisplay.style.display=displayMode;
+		if(hash2=="feasible"){
+		  var solDisplay =document.getElementById("sol_1".concat(hash));
+		  solDisplay.style.display=displayMode;
+		  var solDisplay4 =document.getElementById("last_row_feasible");
+		  solDisplay4.style.display=displayMode;
+		} else{
+		  console.log(hash2);
+		  var solDisplay3 =document.getElementById("inf_img");
+		  solDisplay3.style.display=displayMode;
+		  console.log(hash2);
+		  var solDisplay2 =document.getElementById(hash2);
+		  solDisplay2.style.display=displayMode;
+		  var solDisplay4 =document.getElementById("last_row_feasible");
+		  solDisplay4.style.display="none";
+		}
+	
 		var descDisplay =document.getElementById("description_1".concat(hash));
 		descDisplay.style.display=displayMode;
-
+		
 		console.log("before model");         
 		var modDisplay =document.getElementById("model_1".concat(hash));
 		modDisplay.style.display=displayMode;
@@ -194,14 +272,28 @@
 		resDisplay.style.display=displayMode;
       }
         
-      function undisplayAttachedToSliders(hash){
+      function undisplayAttachedToSliders(hash,hash2){
 		console.log("undisplay");          
 		console.log(hash);
 		var displayMode="none";   
 		var resourceDisplay=document.getElementById("resources_1".concat(hash));
 		resourceDisplay.style.display=displayMode;    
-		var solDisplay =document.getElementById("sol_1".concat(hash));
-		solDisplay.style.display=displayMode;
+
+		if(hash2=="feasible"){
+		  var solDisplay =document.getElementById("sol_1".concat(hash));
+		  solDisplay.style.display=displayMode;
+		  var solDisplay4 =document.getElementById("last_row_feasible");
+		  solDisplay4.style.display=displayMode;
+		} else{
+		  var solDisplay =document.getElementById("inf_img");
+		  solDisplay.style.display=displayMode;
+		  console.log(hash2);
+		  var solDisplay2 =document.getElementById(hash2);
+		  solDisplay2.style.display=displayMode;
+		  var solDisplay4 =document.getElementById("last_row_feasible");
+		  solDisplay4.style.display="none";
+		}
+
 		var descDisplay =document.getElementById("description_1".concat(hash));
 		descDisplay.style.display=displayMode;
 		var modDisplay =document.getElementById("model_1".concat(hash));
@@ -209,3 +301,10 @@
 		var resDisplay =document.getElementById("result_1".concat(hash)).closest("div");
 		resDisplay.style.display=displayMode;   
       }
+
+	window.addEventListener('beforeunload', function(event) {
+		console.log("leaving");
+    		sliderARE.removeEventListener('input', (event));
+    		sliderABE.removeEventListener('input', (event));
+    		sliderAYE.removeEventListener('input', (event));
+	});

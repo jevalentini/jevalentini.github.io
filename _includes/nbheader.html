@@ -19,8 +19,15 @@
         <div class="trigger">
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
-            {%- if my_page.title -%}
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+	    {%- assign link_title = page.title -%}
+            {%- if my_page -%}
+           	 {%- if link_title -%}
+ 			{%- if my_page.title != link_title -%}
+            			<a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+			{% else %}
+				<a class="page-link" style="color: black; text-decoration: none; font-weight: bold;">{{ my_page.title | escape }}</a>
+			{% endif %}
+		{% endif %}
             {%- endif -%}
           {%- endfor -%}
           <a class="page-link" href="{{ "/" | relative_url }}">Home</a>
