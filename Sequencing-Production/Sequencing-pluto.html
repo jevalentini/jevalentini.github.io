@@ -1,5 +1,5 @@
 <html>
-    <head id="pluto_Sequencing">
+    <head id="pluto_Sequencing"  style="overflow:hidden">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       /* Default styles */
@@ -22,10 +22,30 @@
       }
     </style>        
     <body>
-        <div class="container">
-             <iframe src="https://marimo.app/l/fkrinn?mode=read&include-code=false&embed=true" style="position:absolute;top:0;left:0;width:100%;height:100%" allowfullscreen="true" frameborder="0" id="timeline_view" mozallowfullscreen="true" msallowfullscreen="true" oallowfullscreen="true" src="" webkitallowfullscreen="true">
-            </iframe> 
+
+    <style>
+        .custom-success-alert {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+
+    <div class="container mt-5" id="customAlert" style="top:0;left:0;width:70%;height:10%">
+        <div class="custom-success-alert" role="alert">
+            <strong>Hey there!</strong> 	
+	Glad to have you here. This is an application made with marimo, a reactive notebook for python. This is a 	customizable app so it may take up some minutes to load in, please be patient.
         </div>
+    </div>
+	<div class="marimo">
+	<iframe src="https://marimo.app/l/30f16s?mode=read&include-code=false&embed=true" style="top:0;left:0;width:100%;height:600%"  frameborder="0" allowfullscreen="true" id="timeline_view2" mozallowfullscreen="true" msallowfullscreen="true" oallowfullscreen="true" src="" webkitallowfullscreen="true">
+	</iframe>
+	</div>  
+
     </body>
     </head>
 </html>
